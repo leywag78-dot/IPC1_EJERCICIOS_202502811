@@ -1,0 +1,74 @@
+
+Pregunta 1
+¿Cuál es la complejidad Big-O de insertarOrdenado que implementaste?
+Justifica tu respuesta.
+
+RESPUESTA:
+La complejidad de insertarOrdenado es O(n), donde n es la cantidad
+de nodos en la lista.
+
+Justificación:
+    1.El algoritmo recorre la lista desde el HEAD buscando la posición
+     correcta de inserción (el primer nodo cuya nota sea >= a la nota
+     del nuevo elemento).
+    2.En el peor caso (nota más alta de todas), el puntero recorre
+     todos los nodos hasta llegar al TAIL antes de insertar.
+     Los casos especiales (lista vacía, insertar al inicio, insertar
+     al final) se resuelven en O(1) con comparaciones directas con
+     head.nota y tail.nota, pero no mejoran el caso promedio.
+    3.La inserción en sí (actualizar prev/next) es O(1) una vez
+      encontrada la posición.
+
+  Por lo tanto: T(n) = O(n).
+
+
+Pregunta 2 
+Para cada operación, indica si es más eficiente usar un Array o una
+Lista Enlazada y por qué.
+
+OPERACIÓN 1: Buscar al estudiante con el carnet 202300001
+  Estructura eficiente: Array (si está ordenado) o similar en
+  tiempo con Lista Enlazada (si no está ordenado).
+
+  Análisis
+    • Array NO ordenado = O(n): búsqueda lineal.
+    • Array ORDENADO= O(log n): se puede aplicar otro tipo de búsqueda.
+      gracias al acceso directo por índice.
+    • Lista Enlazada =O(n): siempre recorrido secuencial, sin
+      importar si está ordenada, porque no tiene acceso por índice.
+
+  Conclusión: Si los datos están ordenados, el Array es más eficiente
+  (O(log n) vs O(n)). Si no están ordenados, ambas son O(n) pero el
+  array tiene mejor rendimiento.
+  
+
+OPERACIÓN 2: Agregar 500 estudiantes nuevos al inicio del registro
+  Estructura más eficiente: LISTA ENLAZADA.
+
+  Análisis:
+    • Array = O(n) por cada inserción al inicio: todos los elementos
+      existentes deben desplazarse una posición a la derecha.
+      Para 500 inserciones: O(500 × n) = O(n²) en el peor caso.
+    • Lista Enlazada =O(1) por cada inserción al inicio: solo se
+      actualiza el puntero head y el enlace del nuevo nodo.
+      Para 500 inserciones: O(500 × 1) = O(500) = O(1) amortizado.
+
+  Conclusión: La LISTA ENLAZADA es ampliamente superior para
+  inserciones al inicio. 
+
+
+OPERACIÓN 3: Acceder directamente al 3er estudiante de la lista
+  Estructura más eficiente: Array.
+
+  Análisis detallado:
+    • Array = O(1): acceso directo por índice. La dirección
+      de memoria se calcula en tiempo constante:
+      dirección = base + (índice × tamaño_elemento).
+    • Lista Enlazada = O(n): para llegar al 3er nodo hay que partir
+      desde el HEAD y seguir los punteros: head -> nodo1 -> nodo2 -> nodo3.
+      En general, llegar al nodo k cuesta O(k).
+
+  Conclusión: El ARRAY es radicalmente más eficiente para acceso
+  posicional directo. 
+
+
